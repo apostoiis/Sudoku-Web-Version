@@ -13,8 +13,10 @@ end
 
 # this method removes some digits from the solution to create a puzzle
 def puzzle(sudoku)
-  # this method is yours to implement
-  sudoku
+  sudoku.each_with_index do 
+  	|number, index| 
+  	if rand(5) == 1 then sudoku[index] = 0
+  	end
 end
 
 get '/' do
@@ -23,6 +25,10 @@ get '/' do
 	@current_solution = puzzle(sudoku)
 	erb :index
 end
+
+get '/last-visit' do
+	"Previous visit to homepage: #{session[:last_visit]}"
+end 
 
 get '/solution' do
   @current_solution = session[:solution]
