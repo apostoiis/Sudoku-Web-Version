@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/stylesheets/application.css" type="text/css">
   </head>
   <body>
+    <h1>There's always time for another game of Sudoku!</h1>
     <div id="sudoku">
       <!-- one div for each row -->
       <% 3.times do |row| %>
@@ -18,7 +19,7 @@
                   <% 3.times do |cell| %>
                     <div class="cell">
                       <!-- every cell will have an uinput field -->
-                      <input type="text">
+                      <input type="text" maxlength="1" autocomplete="off">
                     </div>
                   <% end %>
                 </div>
