@@ -1,5 +1,5 @@
 class Sudoku
-  
+
   COLUMN_SIZE = 9
   SIZE = COLUMN_SIZE * COLUMN_SIZE
   BOX_SIZE = Math.sqrt(COLUMN_SIZE)
@@ -34,7 +34,7 @@ class Sudoku
     values = @cells.map(&:value) # get the values out of the cell objects
     rows = values.each_slice(COLUMN_SIZE).map do |row| # take every 9 values (that's a row)
       row_with_separators = row.insert(3, '|').insert(7, '|') # insert two vertical separators
-      row_with_separators.join(" ") # join the values and separators into a string     
+      row_with_separators.join(" ") # join the values and separators into a string
     end
     separator = '-' * rows.first.length # that's the horizontal separator
     rows.insert(3, separator).insert(7, separator) # insert two horizontal separators
@@ -45,7 +45,7 @@ class Sudoku
     @cells.all? {|cell| cell.solved? }
   end
 
-  def solve!        
+  def solve!
     outstanding_before, looping = SIZE, false
     while !solved? && !looping
       try_to_solve!
@@ -63,7 +63,7 @@ private
   end
 
   def steal_solution(source)
-    initialize_cells(source.to_s)        
+    initialize_cells(source.to_s)
   end
 
   def try_harder
@@ -77,9 +77,9 @@ private
   end
 
   def try_to_solve!
-    @cells.each do |cell|        
-      cell.solve! unless cell.solved?                
-    end      
+    @cells.each do |cell|
+      cell.solve! unless cell.solved?
+    end
   end
 
   def rows(cells)
@@ -94,15 +94,15 @@ private
     end
   end
 
-  def boxes(rows)    
+  def boxes(rows)
     (0..BOX_SIZE-1).inject([]) do |boxes, i|
       relevant_rows = rows.slice(BOX_SIZE * i, BOX_SIZE)
-      boxes + relevant_rows.transpose.each_slice(BOX_SIZE).map(&:flatten)       
-    end        
+      boxes + relevant_rows.transpose.each_slice(BOX_SIZE).map(&:flatten)
+    end
   end
-  
+
   def initialize_cells(digits)
-    cells       = digits.split('').map {|v| Cell.new(v) }    
+    cells       = digits.split('').map {|v| Cell.new(v) }
     rows        = rows(cells)
     columns     = columns(cells, rows)
     boxes       = boxes(rows)
