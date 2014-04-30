@@ -1,4 +1,4 @@
-.box, .cell {
+div.box, div.cell {
   display: inline-block;
 }
 
