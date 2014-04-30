@@ -13,10 +13,10 @@ def random_sudoku
 end
 
 # this method removes some digits from the solution to create a puzzle
-def puzzle(sudoku,difficulty=2)
-  sudoku.each_with_index do 
-  	|number, index| 
-  	if rand(difficulty) == 1 then sudoku[index] = 0 end
+def puzzle(sudoku)
+  sudoku.map do 
+  	|number| 
+  	rand(4) == 1 ? 0 : number
   end
 end
 
