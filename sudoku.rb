@@ -3,6 +3,7 @@ require_relative './lib/sudoku'
 require_relative './lib/cell'
 
 enable :sessions
+set :session_secret, '*&(^B234'
 
 def random_sudoku
   seed = (1..9).to_a.shuffle + Array.new(81-9, 0)
@@ -12,7 +13,7 @@ def random_sudoku
 end
 
 # this method removes some digits from the solution to create a puzzle
-def puzzle(sudoku,difficulty=5)
+def puzzle(sudoku,difficulty=2)
   sudoku.each_with_index do 
   	|number, index| 
   	if rand(difficulty) == 1 then sudoku[index] = 0 end
