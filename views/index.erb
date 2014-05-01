@@ -6,9 +6,9 @@
   </head>
   <body>
     <h1>There's always time for another game of Sudoku!</h1>
-      <div id="flash">
+    <div id="flash">
       <%= flash[:notice] %>
-      </div>
+    </div>
     <div id="sudoku">
       <form action="/" method="post">
         <!-- one div for each row -->
@@ -21,7 +21,7 @@
             <% 3.times do |cell_row| %>
             <div class="cell-row">
               <% 3.times do |cell| %>
-                <%= partial :cell, :locals=>{:cell_index => row*27+box*3+cell_row*9+cell} %>
+              <%= partial :cell, :locals=>{:cell_index => row*27+box*3+cell_row*9+cell} %>
               <% end %>
             </div>
             <% end %>
@@ -30,6 +30,11 @@
         </div>
         <% end %>
         <button>Check Solution</button>
+      </form>
+      <form action="/change_difficulty" method="get">
+        <button name="level" value="5" type="submit">Easy</button>
+        <button name="level" value="3" type="submit">Medium</button>
+        <button name="level" value="2" type="submit">Hard</button>
       </form>
     </div>
   </body>

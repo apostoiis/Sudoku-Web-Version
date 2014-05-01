@@ -21,10 +21,10 @@ def random_sudoku
 end
 
 # this method removes some digits from the solution to create a puzzle
-def puzzle(sudoku)
+def puzzle(sudoku, difficulty)
   sudoku.map do 
   	|number| 
-  	rand(4) == 1 ? 0 : number
+  	rand(difficulty) == 1 ? 0 : number
   end
 end
 
@@ -84,3 +84,15 @@ get '/solution' do
   @current_solution = session[:solution]
   erb :index
 end
+
+get "/change_difficulty" do 
+  level = params[:level].to_i
+  sudoku = random_sudoku
+  session[:solution] = sudoku
+  session[:puzzle] = puzzle(sudoku, level)
+  session[:current_solution] = session[:puzzle]
+  @current_solution = session[:current_solution] || session[:puzzle]
+  @solution = session[:solution]
+  @puzzle = session[:puzzle]
+  erb :index
+end 
