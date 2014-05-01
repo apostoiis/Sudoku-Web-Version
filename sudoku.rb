@@ -83,6 +83,9 @@ get '/last-visit' do
 end 
 
 get '/solution' do
+  @puzzle = session[:puzzle]
+  @check_solution = session[:check_solution]
+  @solution = session[:solution]
   @current_solution = session[:solution]
   erb :index
 end
