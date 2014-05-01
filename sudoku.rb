@@ -104,9 +104,10 @@ end
 
 
 post '/reset' do
-  session[:current_solution] = session[:current_solution]
+
   @current_solution = session[:current_solution] || session[:puzzle]
   @solution = session[:solution]
   @puzzle = session[:puzzle]
+  session[:current_solution] = session[:puzzle]
   erb :index
 end
