@@ -11,7 +11,7 @@ enable :sessions
 set :session_secret, '*&(^B234'
 set :partial_template_engine, :erb
 
-use Rack::Flash 
+use Rack::Flash
 
 def random_sudoku
   seed = (1..9).to_a.shuffle + Array.new(81-9, 0)
@@ -23,8 +23,8 @@ end
 # this method removes some digits from the solution to create a puzzle
 
 def puzzle(sudoku, difficulty=5)
-  sudoku.map do 
-  	|number| 
+  sudoku.map do
+  	|number|
   	rand(difficulty) == 1 ? 0 : number
   end
 end
@@ -52,7 +52,7 @@ end
 
 def prepare_to_check_solution
   @check_solution = session[:check_solution]
-  if @check_solution 
+  if @check_solution
     flash[:notice] = "Incorrect values are highlighted in yellow"
     end
     session[:check_solution] = nil
@@ -80,7 +80,7 @@ end
 
 get '/last-visit' do
 	"Previous visit to homepage: #{session[:last_visit]}"
-end 
+end
 
 get '/solution' do
   @puzzle = session[:puzzle]
@@ -90,7 +90,7 @@ get '/solution' do
   erb :index
 end
 
-get "/change_difficulty" do 
+get "/change_difficulty" do
   level = params[:level].to_i
   sudoku = random_sudoku
   session[:solution] = sudoku
@@ -100,4 +100,13 @@ get "/change_difficulty" do
   @solution = session[:solution]
   @puzzle = session[:puzzle]
   erb :index
-end 
+end
+
+
+post '/reset' do
+  session[:current_solution] = session[:current_solution]
+  @current_solution = session[:current_solution] || session[:puzzle]
+  @solution = session[:solution]
+  @puzzle = session[:puzzle]
+  erb :index
+end
