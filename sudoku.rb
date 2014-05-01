@@ -21,10 +21,10 @@ def random_sudoku
 end
 
 # this method removes some digits from the solution to create a puzzle
-def puzzle(sudoku)
+def puzzle(sudoku,difficulty=5)
   sudoku.map do 
   	|number| 
-  	rand(4) == 1 ? 0 : number
+  	rand(difficulty) == 1 ? 0 : number
   end
 end
 
@@ -74,6 +74,13 @@ post '/' do
   session[:current_solution] = cells.map{|value| value.to_i}.join
   session[:check_solution] = true
   redirect to ("/")
+end
+
+post '/change_difficulty' do
+  sudoku = random_sudoku
+  session[:solution] = sudoku
+  session[:puzzle] = puzzle(sudoku,params[:name])
+  session[:current_solution] = session[:puzzle]
 end
 
 get '/last-visit' do
