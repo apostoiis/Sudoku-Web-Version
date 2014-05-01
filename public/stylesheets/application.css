@@ -12,6 +12,11 @@ div.box, div.cell {
 	text-align: center;
 }
 
+.box {
+  border: 1px solid black;
+  outline: 1px solid black;
+}
+
 body {
 	text-align: center;
 	font-family: Arial;
