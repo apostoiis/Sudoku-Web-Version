@@ -1,35 +1,128 @@
+@font-face {
+    font-family: 'minecraftiaregular';
+    src: url('../fonts/minecraftia-webfont.eot');
+    src: url('../fonts/minecraftia-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/minecraftia-webfont.woff') format('woff'),
+         url('../fonts/minecraftia-webfont.ttf') format('truetype'),
+         url('../fonts/minecraftia-webfont.svg#minecraftiaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+  text-align: center;
+  font-family: 'minecraftiaregular', Helvetica;
+  background: black;
+}
+
+#container {
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+h1 {
+  color: white;
+}
+
 div.box, div.cell {
   display: inline-block;
 }
 
+/*form button {
+  float: left;
+}*/
+
+/*.forms-container {
+  position: absolute;
+  top: 33%;
+  left: 44%;
+}*/
+
+button {
+  outline: none;
+  width: 126px;
+  height: 34px;
+  background-color: transparent;
+  border: 0;
+  padding: 1px;
+}
+
+.sudoku-img {
+  position: absolute;
+  top: 12%;
+  left: 4%;
+  width: 122px;
+  height: 22px;
+}
+
+.easy {
+  position: absolute;
+  top: 37%;
+  left: 4%;
+}
+
+.medium {
+  position: absolute;
+  top: 42%;
+  left: 4%;
+}
+
+.hard {
+  position: absolute;
+  top: 47%;
+  left: 4%;
+}
+
+.check {
+  position: absolute;
+  top: 52%;
+  left: 4%;
+}
+
+.reset {
+  position: absolute;
+  top: 57%;
+  left: 4%;
+}
+
+.answer {
+  position: absolute;
+  top: 62%;
+  left: 4%;
+}
+
+button img {
+  width: 122px;
+  height: 22px;
+}
+
 .cell input {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
+  background: #ffe5a1;
+  font-family: 'minecraftiaregular', Helvetica;
+  text-align: center;
 }
 
 #sudoku {
+  background: url('../SudokuConcept.png') no-repeat center;
+  text-align: center;
 	font-size:  0;
-	text-align: center;
 }
 
 .box {
+  margin: 0 auto;
   border: 1px solid black;
   outline: 1px solid black;
 }
 
-body {
-	text-align: center;
-	font-family: Arial;
-}
-
 .incorrect {
-	background-color: yellow;
-}
-
-.value-provided {
-	background-color: #DDD;
+	background-color: #FF000D !important;
+  color: white;
 }
 
 #flash {
-	margin: 20px;
+  color: white;
 }
