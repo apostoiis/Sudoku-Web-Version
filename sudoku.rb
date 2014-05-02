@@ -61,7 +61,7 @@ end
 get '/' do
   prepare_to_check_solution
   generate_new_puzzle_if_necessary
-  @current_solution = session[:current_solution] || session[:puzzle]
+  @current_solution = session[:current_solution] #|| session[:puzzle]
   @solution = session[:solution]
   @puzzle = session[:puzzle]
  #  sudoku = random_sudoku
@@ -73,6 +73,7 @@ end
 post '/' do
   cells = box_order_to_row_order(params["cell"])
   session[:current_solution] = cells.map{|value| value.to_i}.join
+  session[:save] = session[:current_solution]
   session[:check_solution] = true
   redirect to ("/")
 end
@@ -114,22 +115,10 @@ post '/reset' do
   erb :index
 end
 
-post '/save' do
-  puts "current solution"
-  puts session[:current_solution].inspect
-  puts "puzzle"
-  puts session[:puzzle].inspect
-  puts "solution"
-  puts session[:solution].inspect
-  session[:save] = [session[:current_solution]] + [session[:puzzle]] + [session[:solution]]
-  puts "save"
-  puts session[:save].inspect
-  redirect to ("/")
-end
 
 post '/retrieve' do
-  session[:current_solution] = session[:save][0]
-  session[:puzzle] = session[:save][1]
-  session[:solution] = session[:save][2]
+  session[:current_solution] = session[:save]
+  #session[:puzzle] = session[:save][1]
+  #session[:solution] = session[:save][2]
   redirect to ("/")
 end

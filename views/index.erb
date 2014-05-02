@@ -31,23 +31,24 @@
         <% end %>
         <button>Check Solution</button>
       </form>
-          <form action="/save" method="post">
-             <button>Save</button>
-           </form>
-    <form action="/solution" method="get">
-      <button>Solution</button>
-    </form>
-    <form action="/reset" method="post">
-      <button>Reset</button>
-    </form>
-    <form action="http://en.wikipedia.org/wiki/Sudoku">
-      <input type="submit" value="Sudoku Rules"></form>
-      <form action="/change_difficulty" method="get">
-        <button name="level" value="5" type="submit">Easy</button>
-        <button name="level" value="3" type="submit">Medium</button>
-        <button name="level" value="2" type="submit">Hard</button>
+      
+      <form action="/retrieve" method="post">
+        <button>Retrieve</button>
       </form>
-    </form>
-  </div>
-</body>
+      <form action="/solution" method="get">
+        <button>Solution</button>
+      </form>
+      <form action="/reset" method="post">
+        <button>Reset</button>
+      </form>
+      <form action="http://en.wikipedia.org/wiki/Sudoku">
+        <input type="submit" value="Sudoku Rules"></form>
+        <form action="/change_difficulty" method="get">
+          <button name="level" value="5" type="submit">Easy</button>
+          <button name="level" value="3" type="submit">Medium</button>
+          <button name="level" value="2" type="submit">Hard</button>
+        </form>
+      </form>
+    </div>
+  </body>
 </html>
