@@ -77,7 +77,6 @@ post '/' do
   redirect to ("/")
 end
 
-
 get '/last-visit' do
 	"Previous visit to homepage: #{session[:last_visit]}"
 end
@@ -109,10 +108,14 @@ end
 
 
 post '/reset' do
-
   @current_solution = session[:current_solution] || session[:puzzle]
   @solution = session[:solution]
   @puzzle = session[:puzzle]
   session[:current_solution] = session[:puzzle]
   erb :index
+end
+
+post '/save' do
+  session[:save] = session[:current_solution] + session[:puzzle] + session[:solution]
+  redirect to ("/")
 end
