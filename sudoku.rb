@@ -83,11 +83,16 @@ get '/last-visit' do
 end
 
 get '/solution' do
+  if session[:solution] == nil
+    "Hello, person! Well, there´s no cookie:( So there is no solution...looove!"
+      erb :sloth
+  else
   @puzzle = session[:puzzle]
   @check_solution = session[:check_solution]
   @solution = session[:solution]
   @current_solution = session[:solution]
   erb :index
+  end
 end
 
 get "/change_difficulty" do
