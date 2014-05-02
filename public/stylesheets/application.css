@@ -1,35 +1,44 @@
+@font-face {
+    font-family: 'minecraftiaregular';
+    src: url('../fonts/minecraftia-webfont.eot');
+    src: url('../fonts/minecraftia-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/minecraftia-webfont.woff') format('woff'),
+         url('../fonts/minecraftia-webfont.ttf') format('truetype'),
+         url('../fonts/minecraftia-webfont.svg#minecraftiaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+  text-align: center;
+  font-family: 'minecraftiaregular', Helvetica;
+}
+
+
 div.box, div.cell {
   display: inline-block;
 }
 
 .cell input {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  /*background: #a3a3a3;*/
+  font-family: 'minecraftiaregular', Helvetica;
+  text-align: center;
 }
 
 #sudoku {
+  background: url('../SudokuConcept.png') no-repeat center;
+  text-align: center;
 	font-size:  0;
-	text-align: center;
 }
 
 .box {
+  margin: 0 auto;
   border: 1px solid black;
   outline: 1px solid black;
 }
 
-body {
-	text-align: center;
-	font-family: Arial;
-}
-
 .incorrect {
 	background-color: yellow;
-}
-
-.value-provided {
-	background-color: #DDD;
-}
-
-#flash {
-	margin: 20px;
 }
