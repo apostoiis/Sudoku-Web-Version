@@ -83,7 +83,6 @@ end
 
 get '/solution' do
   if session[:solution] == nil
-    "Hello, person! Well, there´s no cookie:( So there is no solution...looove!"
       erb :sloth
   else
   @puzzle = session[:puzzle]
