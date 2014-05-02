@@ -115,6 +115,21 @@ post '/reset' do
 end
 
 post '/save' do
-  session[:save] = session[:current_solution] + session[:puzzle] + session[:solution]
+  puts "current solution"
+  puts session[:current_solution].inspect
+  puts "puzzle"
+  puts session[:puzzle].inspect
+  puts "solution"
+  puts session[:solution].inspect
+  session[:save] = [session[:current_solution]] + [session[:puzzle]] + [session[:solution]]
+  puts "save"
+  puts session[:save].inspect
+  redirect to ("/")
+end
+
+post '/retrieve' do
+  session[:current_solution] = session[:save][0]
+  session[:puzzle] = session[:save][1]
+  session[:solution] = session[:save][2]
   redirect to ("/")
 end
